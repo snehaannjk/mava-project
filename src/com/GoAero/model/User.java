@@ -44,8 +44,6 @@ public class User {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
-
-
     // Getters and Setters
     public int getUserId() {
         return userId;
