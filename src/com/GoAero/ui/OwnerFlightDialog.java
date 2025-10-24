@@ -98,13 +98,29 @@ public class OwnerFlightDialog extends JDialog {
         JPanel headerSection = createHeaderSection();
         mainPanel.add(headerSection, BorderLayout.NORTH);
 
+        // Create scrollable content area
+        JPanel scrollableContent = new JPanel(new BorderLayout());
+        scrollableContent.setBackground(BACKGROUND_GRAY);
+
         // Content section with enhanced form
         JPanel contentSection = createContentSection();
-        mainPanel.add(contentSection, BorderLayout.CENTER);
+        scrollableContent.add(contentSection, BorderLayout.CENTER);
 
         // Button panel
         JPanel buttonPanel = createButtonSection();
-        add(buttonPanel, BorderLayout.SOUTH);
+        scrollableContent.add(buttonPanel, BorderLayout.SOUTH);
+
+        // Wrap in scroll pane
+        JScrollPane scrollPane = new JScrollPane(scrollableContent);
+        scrollPane.setBorder(null);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
+        scrollPane.setBackground(BACKGROUND_GRAY);
+        scrollPane.getViewport().setBackground(BACKGROUND_GRAY);
+
+        mainPanel.add(scrollPane, BorderLayout.CENTER);
+        add(mainPanel, BorderLayout.CENTER);
     }
 
     private void setupEventListeners() {
@@ -645,14 +661,14 @@ public class OwnerFlightDialog extends JDialog {
         contentPanel.setBackground(CARD_WHITE);
         contentPanel.setBorder(BorderFactory.createCompoundBorder(
             BorderFactory.createLineBorder(LIGHT_GRAY, 1),
-            new EmptyBorder(25, 25, 25, 25)
+            new EmptyBorder(30, 30, 30, 30)
         ));
 
         // Form panel with enhanced layout
         JPanel formPanel = new JPanel(new GridBagLayout());
         formPanel.setBackground(CARD_WHITE);
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(15, 10, 15, 10);
+        gbc.insets = new Insets(18, 15, 18, 15);
         gbc.anchor = GridBagConstraints.WEST;
 
         // Flight Details Section
@@ -786,9 +802,9 @@ public class OwnerFlightDialog extends JDialog {
     }
 
     private JPanel createButtonSection() {
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 15, 0));
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 0));
         buttonPanel.setBackground(BACKGROUND_GRAY);
-        buttonPanel.setBorder(new EmptyBorder(25, 0, 0, 0));
+        buttonPanel.setBorder(new EmptyBorder(35, 0, 20, 0));
 
         // Enhanced button sizing
         saveButton.setPreferredSize(new Dimension(160, 45));
