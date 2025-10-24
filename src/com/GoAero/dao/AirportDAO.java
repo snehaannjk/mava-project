@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Data Access Object for Airport entity
  */
-public class Airport implements BaseDAO<Airport, Integer> {
+public class AirportDAO implements BaseDAO<Airport, Integer> {
 
     private static final String INSERT_AIRPORT = 
         "INSERT INTO airports (airport_code, airport_name, city, country) VALUES (?, ?, ?, ?)";

@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Data Access Object for Admin entity
  */
-public class Admin implements BaseDAO<Admin, Integer> {
+public class AdminDAO implements BaseDAO<Admin, Integer> {
 
     private static final String INSERT_ADMIN = 
         "INSERT INTO admin_users (username, password_hash) VALUES (?, ?)";
