@@ -3,17 +3,15 @@ package com.GoAero.dao;
 import com.GoAero.db.DBConnection;
 import com.GoAero.model.Flight;
 
-import java.math.BigDecimal;
 import java.sql.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Data Access Object for Flight entity
  */
-public class Flight implements BaseDAO<Flight, Integer> {
+public class FlightDAO implements BaseDAO<Flight, Integer> {
 
     private static final String INSERT_FLIGHT = 
         "INSERT INTO flight_data (company_id, flight_code, flight_name, capacity, departure_airport_id, " +
